@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Ettore | Historic Lucca</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .hidden-menu { display: none; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased relative">
+
+    <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-stone-400 hover:text-white transition">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <img id="lightbox-img" src="" class="max-h-[90vh] max-w-[95vw] object-contain rounded-md shadow-2xl" />
+    </div>
+
+    <div id="bookingModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden my-8 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 transition">
+                <i data-lucide="x"></i>
+            </button>
+            
+            <div class="p-8">
+                <h3 class="text-3xl font-serif text-amber-800 mb-2">Request to Book</h3>
+                <p class="text-stone-600 mb-6">Fill out the details below and we will get back to you to confirm your dates.</p>
+                
+                <form name="CasaEttoreBooking" method="POST" data-netlify="true" class="space-y-4">
+                    <input type="hidden" name="form-name" value="CasaEttoreBooking" />
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-stone-700 mb-1">Check-in</label>
+                            <input type="date" name="checkIn" required class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-stone-700 mb-1">Check-out</label>
+                            <input type="date" name="checkOut" required class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">Full Name</label>
+                        <input type="text" name="name" required placeholder="e.g. Jane Doe" class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-stone-700 mb-1">Email</label>
+                            <input type="email" name="email" required placeholder="you@example.com" class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-stone-700 mb-1">Phone Number</label>
+                            <input type="tel" name="phone" required placeholder="+1 (555) 000-0000" class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">Number of Guests</label>
+                        <select name="guests" class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition bg-white">
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6 Guests</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">Additional Comments or Requests</label>
+                        <textarea name="comments" rows="3" placeholder="Tell us a little bit about your trip..." class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-amber-700 text-white font-medium py-3 rounded-lg hover:bg-amber-800 transition">
+                        Send Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div onclick="window.scrollTo(0,0)" class="text-2xl font-serif text-amber-800 font-bold tracking-wider cursor-pointer bg-white/80 backdrop-blur-sm px-3 py-1 rounded-md">
+                CASA ETTORE
+            </div>
+            
+            <div class="hidden md:flex space-x-6 items-center bg-stone-900/40 backdrop-blur-md px-6 py-2 rounded-full">
+                <a href="#about" class="text-sm font-medium text-white hover:text-amber-300 transition">About</a>
+                <a href="#space" class="text-sm font-medium text-white hover:text-amber-300 transition">The Space</a>
+                <a href="#gallery" class="text-sm font-medium text-white hover:text-amber-300 transition">Gallery</a>
+                <a href="#calendar" class="text-sm font-medium text-white hover:text-amber-300 transition">Availability</a>
+                <a href="#location" class="text-sm font-medium text-white hover:text-amber-300 transition">Location</a>
+                <button onclick="openModal()" class="bg-amber-700 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-amber-600 transition ml-2">
+                    Book Now
+                </button>
+            </div>
+
+            <div class="md:hidden">
+                <button onclick="toggleMenu()" id="menuBtn" class="text-stone-800 bg-white/80 backdrop-blur-sm p-2 rounded-md">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden-menu md:hidden bg-white absolute top-full left-0 w-full shadow-lg border-t border-stone-100">
+            <div class="flex flex-col px-4 pt-2 pb-6 space-y-4">
+                <a href="#about" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">About</a>
+                <a href="#space" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">The Space</a>
+                <a href="#gallery" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Gallery</a>
+                <a href="#calendar" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Availability</a>
+                <a href="#location" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Location</a>
+                <button onclick="openModal(); toggleMenu();" class="bg-amber-700 text-white text-center px-4 py-3 rounded-md font-medium mt-4 w-full">
+                    Book Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <video 
+                autoplay 
+                loop 
+                muted 
+                playsinline 
+                poster="images/living-room-main.jpg"
+                class="w-full h-full object-cover"
+            >
+                <source src="images/main-screen-vid.mov">
+            </video>
+            <div class="absolute inset-0 bg-stone-900/40"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <h1 class="text-5xl md:text-7xl font-serif text-white mb-6 drop-shadow-lg">Casa Ettore</h1>
+            <p class="text-xl md:text-2xl text-stone-100 mb-10 font-light tracking-wide drop-shadow-md">
+                Experience enchanting history and modern luxury in the heart of Lucca.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#about" class="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-stone-900 transition duration-300 text-center w-full sm:w-auto">
+                    Explore Our Home
+                </a>
+                <button onclick="openModal()" class="bg-amber-700 text-white px-8 py-3 rounded-full font-medium hover:bg-amber-800 transition duration-300 flex items-center justify-center gap-2 w-full sm:w-auto">
+                    <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                    Check Availability
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="space" class="py-20 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-serif text-amber-800 mb-4">The Residence</h2>
+                <p class="max-w-2xl mx-auto text-stone-600">
+                    Located on the first floor (second floor in Europe) of a historic palazzo, right next to the main piazza. You will have quick access to the city while enjoying the peace of a quiet street.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center border border-stone-100">
+                    <i data-lucide="bed-double" class="mx-auto text-amber-700 mb-4 w-10 h-10" stroke-width="1.5"></i>
+                    <h3 class="text-lg font-bold mb-2">3 King Bedrooms</h3>
+                    <p class="text-stone-500 text-sm">Featuring high quality linens and full privacy during your stay.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center border border-stone-100">
+                    <i data-lucide="bath" class="mx-auto text-amber-700 mb-4 w-10 h-10" stroke-width="1.5"></i>
+                    <h3 class="text-lg font-bold mb-2">3 En-Suite Baths</h3>
+                    <p class="text-stone-500 text-sm">Including a luxurious steam shower/hammam in the master suite.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center border border-stone-100">
+                    <i data-lucide="chef-hat" class="mx-auto text-amber-700 mb-4 w-10 h-10" stroke-width="1.5"></i>
+                    <h3 class="text-lg font-bold mb-2">Gourmet Kitchen</h3>
+                    <p class="text-stone-500 text-sm">Fully equipped for cooking meals from local farmer's markets.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center border border-stone-100">
+                    <i data-lucide="coffee" class="mx-auto text-amber-700 mb-4 w-10 h-10" stroke-width="1.5"></i>
+                    <h3 class="text-lg font-bold mb-2">Private Patio</h3>
+                    <p class="text-stone-500 text-sm">A covered, private space attached to the master bedroom to relax.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 cursor-pointer relative group" onclick="openLightbox(document.getElementById('living-room-fire-img').src)">
+                   <img 
+                       id="living-room-fire-img"
+                       src="images/living-room-fireplace.jpg" 
+                       alt="Living Room with Fireplace" 
+                       class="w-full h-full object-cover min-h-[300px] group-hover:opacity-90 transition duration-300" 
+                       onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80'"
+                   />
+                   <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                       <div class="bg-black/50 text-white p-3 rounded-full"><i data-lucide="maximize-2"></i></div>
+                   </div>
+                </div>
+                <div class="lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
+                    <h3 class="text-2xl font-serif text-stone-800 mb-4">A Perfect Place to Rest</h3>
+                    <p class="text-stone-600 mb-6 leading-relaxed">
+                        Spend an evening together in our welcoming living room, whether streaming a movie on the big screen tv or playing one of our many board games. 
+                    </p>
+                    <p class="text-stone-600 leading-relaxed mb-6">
+                        Shop like a local—visit the meat store, cheese store, wine store, and produce store, each deserving their own visit. Casa Ettore is a perfect place to rest after a long day of exploring or just relax and experience "La Dolce Vita".
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-serif text-amber-800 mb-6">About This Space</h2>
+                <p class="text-lg text-stone-600 mb-6 leading-relaxed">
+                    Enjoy a privileged position in the heart of the historic center. Our flat is part of a historic palazzo that has recently been fully renovated so that you can experience the enchanting history and beauty, with modern comforts and luxury.
+                </p>
+                <p class="text-lg text-stone-600 mb-6 leading-relaxed">
+                    You will love the privacy that the 3 en-suite rooms provide while appreciating the large family room and fully equipped kitchen, perfect for preparing a gourmet meal.
+                </p>
+                <p class="text-lg text-stone-600 font-medium italic text-amber-700">
+                    Relax in the steam shower or sip your coffee on the back patio. Your Tuscan adventure awaits!
+                </p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <img 
+                    src="images/lucca-wall.jpg" 
+                    alt="Lucca Wall" 
+                    onclick="openLightbox(this.src)"
+                    class="rounded-lg shadow-md h-48 w-full object-cover col-span-2 cursor-pointer hover:opacity-90 transition duration-300" 
+                    onerror="this.src='https://images.unsplash.com/photo-1516483638261-f40af5aa3869?auto=format&fit=crop&w=800&q=80'"
+                />
+                <img 
+                    src="images/living-room-window.jpg" 
+                    alt="Living Room Window" 
+                    onclick="openLightbox(this.src)"
+                    class="rounded-lg shadow-md h-48 w-full object-cover col-span-2 cursor-pointer hover:opacity-90 transition duration-300" 
+                    onerror="this.src='https://images.unsplash.com/photo-1516483638261-f40af5aa3869?auto=format&fit=crop&w=800&q=80'"
+                />
+                <img 
+                    src="images/dining-room.jpg" 
+                    alt="Dining Room" 
+                    onclick="openLightbox(this.src)"
+                    class="rounded-lg shadow-md h-48 w-full object-cover cursor-pointer hover:opacity-90 transition duration-300" 
+                    onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745a872e?auto=format&fit=crop&w=400&q=80'"
+                />
+                <img 
+                    src="images/dining-room-2.jpg" 
+                    alt="Dining Room Alternative View" 
+                    onclick="openLightbox(this.src)"
+                    class="rounded-lg shadow-md h-48 w-full object-cover cursor-pointer hover:opacity-90 transition duration-300" 
+                    onerror="this.src='https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=400&q=80'"
+                />
+                <img 
+                    src="images/steam-4.jpg" 
+                    alt="Steam Shower" 
+                    onclick="openLightbox(this.src)"
+                    class="rounded-lg shadow-md h-48 w-full object-cover cursor-pointer hover:opacity-90 transition duration-300" 
+                    onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745a872e?auto=format&fit=crop&w=400&q=80'"
+                />
+                <img 
+                    src="images/patio.jpg" 
+                    alt="Patio" 
+                    onclick="openLightbox(this.src)"
+                    class="rounded-lg shadow-md h-48 w-full object-cover cursor-pointer hover:opacity-90 transition duration-300" 
+                    onerror="this.src='https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=400&q=80'"
+                />
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-serif text-amber-800 mb-4">A Glimpse of Casa Ettore</h2>
+            <p class="text-stone-500">Tap any photo to view full screen</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <img src="images/bedroom-1.jpg" alt="Bedroom 1" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=600&q=80'" />
+            <img src="images/bathroom-1.jpg" alt="Bathroom 1" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80'" />
+            <img src="images/bedroom-2.jpg" alt="Bedroom 2" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=600&q=80'" />
+            <img src="images/bathroom-2.jpg" alt="Bathroom 2" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&q=80'" />
+            <img src="images/bedroom-3.jpg" alt="Bedroom 3" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=600&q=80'" />
+            <img src="images/bathroom-3.jpg" alt="Bathroom 3" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80'" />
+        </div>
+
+        <div id="extraPhotos" class="hidden mt-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <img src="images/living-room-3.jpg" alt="Living Room 3" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80'" />
+                <img src="images/champagne-detail.jpg" alt="Champagne Detail" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745a872e?auto=format&fit=crop&w=600&q=80'" />
+                <img src="images/living-room-detail-3.jpg" alt="Living Room Detail 3" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80'" />
+                <img src="images/exterior-view.jpg" alt="Exterior View" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1516483638261-f40af5aa3869?auto=format&fit=crop&w=600&q=80'" />
+                <img src="images/front-door-xmas.jpg" alt="Front Door Xmas" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=600&q=80'" />
+                <img src="images/front-door-left.jpg" alt="Front Door Left View" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1595954421407-b76b2512f716?auto=format&fit=crop&w=600&q=80'" />
+                <img src="images/fountain.jpg" alt="Fountain" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=600&q=80'" />
+                <img src="images/lucca-wall-1.jpg" alt="Lucca Wall 1" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80'" />
+                <img src="images/lucca-wall-2.jpg" alt="Lucca Wall 2" onclick="openLightbox(this.src)" class="rounded-lg shadow-sm h-64 md:h-64 w-full object-cover bg-stone-100 cursor-pointer hover:opacity-90 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1595954421407-b76b2512f716?auto=format&fit=crop&w=600&q=80'" />
+            </div>
+        </div>
+
+        <div class="text-center mt-10">
+            <button onclick="toggleExtraPhotos()" id="showMoreBtn" class="bg-white border-2 border-stone-300 text-stone-700 px-8 py-3 rounded-full font-medium hover:bg-stone-100 hover:border-stone-400 transition duration-300">
+                Show More Photos
+            </button>
+        </div>
+    </section>
+
+    <section id="calendar" class="py-20 bg-stone-100 border-t border-stone-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-serif text-amber-800 mb-4">Availability</h2>
+            <p class="text-stone-600 mb-10 max-w-2xl mx-auto">Check our live calendar below for available dates, then click "Book Now" to send us your inquiry!</p>
+            
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md border border-stone-200 h-[500px] md:h-[600px] w-full">
+                <iframe src="https://calendar.google.com/calendar/embed?src=4d278ef6b7e3cef68ddf14d879c3dd6286ac349f5b2f4ddaca9735edd5f48505%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border:solid 1px #777" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-stone-200">
+        <h2 class="text-3xl font-serif text-amber-800 mb-12 text-center">Location & Arrival</h2>
+        <div class="grid lg:grid-cols-3 gap-8">
+            
+            <div class="bg-stone-50 p-8 rounded-xl border border-stone-200 flex flex-col h-full">
+                <i data-lucide="map-pin" class="text-amber-700 mb-4 w-8 h-8"></i>
+                <h3 class="text-xl font-bold mb-3">ZTL Area Access</h3>
+                <p class="text-stone-600 text-sm leading-relaxed flex-grow">
+                    Our home is located within the ZTL area (Limited Traffic Area, accessible only by permanent residents). <strong>We do not offer on-site parking or allow entering the city with a car.</strong> You cannot drop off luggage directly unless arriving by taxi, as they have special permission to enter.
+                </p>
+                <img src="images/ztl-photo.jpg" onclick="openLightbox(this.src)" class="w-full h-64 object-contain bg-white rounded-lg mt-6 cursor-pointer hover:opacity-90 transition shadow-sm border border-stone-100" onerror="this.src='https://images.unsplash.com/photo-1523531294919-4bab31ecd8ee?auto=format&fit=crop&w=600&q=80'" />
+            </div>
+
+            <div class="bg-stone-50 p-8 rounded-xl border border-stone-200 flex flex-col h-full">
+                <i data-lucide="car" class="text-amber-700 mb-4 w-8 h-8"></i>
+                <h3 class="text-xl font-bold mb-3">Arriving by Car</h3>
+                <p class="text-stone-600 text-sm leading-relaxed flex-grow">
+                    If arriving by car, there is ample parking outside the walls and limited parking inside. Inside the walls: park only in blue paid spots (pay via machine or app). Outside the walls: we recommend the free parking lot, which is about a 10-15 minute walk to the house.
+                </p>
+                <img src="images/arrive-car-map.jpg" onclick="openLightbox(this.src)" class="w-full h-64 object-contain bg-white rounded-lg mt-6 cursor-pointer hover:opacity-90 transition shadow-sm border border-stone-100" onerror="this.src='https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80'" />
+            </div>
+
+            <div class="bg-stone-50 p-8 rounded-xl border border-stone-200 flex flex-col h-full">
+                <i data-lucide="train" class="text-amber-700 mb-4 w-8 h-8"></i>
+                <h3 class="text-xl font-bold mb-3">Arriving by Train</h3>
+                <p class="text-stone-600 text-sm leading-relaxed flex-grow">
+                    If arriving by train, the journey is simple. We are a quick and direct 14-minute walk to the house through the beautiful Porta San Pietro gate.
+                </p>
+                <img src="images/arrive-train-map.jpg" onclick="openLightbox(this.src)" class="w-full h-64 object-contain bg-white rounded-lg mt-6 cursor-pointer hover:opacity-90 transition shadow-sm border border-stone-100" onerror="this.src='https://images.unsplash.com/photo-1532105956626-9569c03602f6?auto=format&fit=crop&w=600&q=80'" />
+            </div>
+
+        </div>
+    </section>
+
+    <section id="notes" class="py-20 bg-stone-800 text-stone-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif text-white mb-10 text-center">Important Things to Note</h2>
+            
+            <div class="space-y-6">
+                <div class="flex gap-4 items-start bg-stone-700/50 p-6 rounded-xl">
+                    <i data-lucide="info" class="text-amber-500 shrink-0 mt-1 w-6 h-6"></i>
+                    <div>
+                        <h4 class="font-bold text-lg text-white mb-2">Our Full-Time Home</h4>
+                        <p class="text-stone-300 text-sm leading-relaxed">
+                            Casa Ettore is our full-time home that we rent out while off on our own adventures. While we make space for you, much of our personal belongings remain (especially in the master room). We open our home to you with trust and hope you will appreciate all the comforts that a regular home (not a sterile vacation rental) provides.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start bg-stone-700/50 p-6 rounded-xl">
+                    <i data-lucide="shield-check" class="text-amber-500 shrink-0 mt-1 w-6 h-6"></i>
+                    <div>
+                        <h4 class="font-bold text-lg text-white mb-2">Passport Registration</h4>
+                        <p class="text-stone-300 text-sm leading-relaxed">
+                            Required by Italian Law: We must collect passport information and submit it to Italian authorities within 24 hours of check-in. You will be asked to share a photo of all passports via Airbnb's secure messaging system prior to check-in. The lockbox code will be shared only after all photos have been sent.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-950 py-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-6 md:mb-0">
+                <h3 class="text-2xl font-serif text-white tracking-wider mb-2">CASA ETTORE</h3>
+                <p class="text-stone-400 text-sm">Heart of the Historic Center • Lucca, Italy</p>
+            </div>
+            
+            <div class="flex flex-col items-center md:items-end space-y-4">
+                <button onclick="openModal()" class="bg-white text-stone-900 px-6 py-2 rounded-full font-medium hover:bg-stone-200 transition text-sm">
+                    Book Now
+                </button>
+                <p class="text-stone-500 text-xs">
+                    Registration Number: IT046017C2PN5QNZWX
+                </p>
+                <p class="text-stone-600 text-xs">
+                    &copy; <span id="year"></span> Casa Ettore. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Set Copyright Year
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md', 'py-3');
+                navbar.classList.remove('bg-transparent', 'py-5');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md', 'py-3');
+                navbar.classList.add('bg-transparent', 'py-5');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('hidden-menu')) {
+                mobileMenu.classList.remove('hidden-menu');
+            } else {
+                mobileMenu.classList.add('hidden-menu');
+            }
+        }
+
+        // Booking Form Modal Logic
+        const modal = document.getElementById('bookingModal');
+        function openModal() {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Photo Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        function openLightbox(imageSrc) {
+            lightboxImg.src = imageSrc;
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Stop scrolling behind the photo
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Close lightbox if user clicks anywhere on the black background
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Photo Gallery Toggle
+        function toggleExtraPhotos() {
+            const extraPhotos = document.getElementById('extraPhotos');
+            const btn = document.getElementById('showMoreBtn');
+            
+            if (extraPhotos.classList.contains('hidden')) {
+                extraPhotos.classList.remove('hidden');
+                btn.innerText = 'Show Less Photos';
+            } else {
+                extraPhotos.classList.add('hidden');
+                btn.innerText = 'Show More Photos';
+                document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
