@@ -371,8 +371,209 @@
 
         </div>
     </section>
+    <!-- Pricing Information Section (Hidden by default, moved after Location) -->
+    <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-stone-200 bg-stone-50/50">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-serif text-amber-800 mb-4">Pricing Information</h2>
+            <p class="text-stone-600 max-w-2xl mx-auto mb-8">Choose the perfect arrangement for your Tuscan adventure.</p>
+            <button onclick="togglePricing()" id="showPricingBtn" class="bg-white border-2 border-amber-700 text-amber-800 px-8 py-3 rounded-full font-medium hover:bg-amber-50 transition duration-300">
+                View Pricing Details
+            </button>
+        </div>
 
-    <section id="notes" class="py-20 bg-stone-800 text-stone-100">
+        <div id="pricingColumns" class="hidden grid lg:grid-cols-3 gap-8">
+            
+            <!-- Column 1: Whole House Rental -->
+            <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full">
+                <h3 class="text-2xl font-serif text-stone-800 mb-2">Whole House Rental</h3>
+                <p class="text-sm font-bold text-amber-700 uppercase tracking-wider mb-6 pb-4 border-b border-stone-100">Private Tuscan Retreat</p>
+                <p class="text-sm text-stone-600 mb-6 leading-relaxed flex-grow">
+                    Enjoy the comfort and privacy of the entire home, perfect for families or groups seeking a relaxed and exclusive stay. The property offers spacious interiors, fully equipped living areas, and the freedom to enjoy your time at your own pace.
+                </p>
+
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-bold text-stone-800 mb-1">Minimum Stay</h4>
+                        <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                            <li>4-night minimum</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-stone-800 mb-1">Nightly Rates</h4>
+                        <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                            <li>January – March: €310 per night</li>
+                            <li>April – October: €360 per night</li>
+                            <li>November – December: €310 per night</li>
+                        </ul>
+                        <p class="text-xs text-stone-500 mt-2 italic">Special pricing may apply during holiday periods and local events (Christmas, New Year, Lucca Comics)—please inquire for details.</p>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-stone-800 mb-1">Extended Stay Discounts</h4>
+                        <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                            <li>20% off stays of 7 nights or more</li>
+                            <li>40% off stays of 30 nights or more</li>
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-bold text-stone-800 mb-1">Cleaning Fee</h4>
+                            <p class="text-sm text-stone-600">€100 per stay</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-stone-800 mb-1">Tourist Tax</h4>
+                            <p class="text-sm text-stone-600">€3.50 per person, per night (first 3 nights only)</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-stone-800 mb-1">Payment & Cancellation</h4>
+                        <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                            <li>20% deposit required to confirm</li>
+                            <li>Remaining balance due 30 days prior</li>
+                            <li>Payments via PayPal, Venmo, or Bank transfer</li>
+                            <li>Full refund for cancellations 30+ days before arrival</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-stone-100 text-center">
+                    <p class="text-sm font-serif text-amber-800 italic">We look forward to welcoming you for a peaceful and memorable stay in Tuscany.</p>
+                </div>
+            </div>
+
+            <!-- Column 2: Private Rooms -->
+            <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full">
+                <h3 class="text-2xl font-serif text-stone-800 mb-2">Private Rooms</h3>
+                <p class="text-sm font-bold text-amber-700 uppercase tracking-wider mb-6 pb-4 border-b border-stone-100">Bed & Breakfast Style</p>
+                <div class="text-sm text-stone-600 mb-6 leading-relaxed flex-grow space-y-3">
+                    <p>For a more intimate and relaxed experience, we offer two charming private rooms within our home, perfect for guests looking for comfort with a personal touch.</p>
+                    <p>Each room accommodates up to 2 guests and features its own private en-suite bathroom. Book individually, or together for up to 4 guests.</p>
+                    <p>Guests are warmly welcomed to enjoy all shared living spaces, including the kitchen, which are shared with your hosts—creating a friendly, authentic atmosphere.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-bold text-stone-800 mb-1">Minimum Stay</h4>
+                        <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                            <li>1-night minimum</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-stone-800 mb-1">Nightly Rates (per room)</h4>
+                        <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                            <li>January – March: €90</li>
+                            <li>April – October: €110</li>
+                            <li>November – December: €90</li>
+                        </ul>
+                        <p class="text-xs text-stone-500 mt-2 italic">Special pricing may apply during holiday periods and local events (Christmas, New Year, Lucca Comics)—please inquire for details.</p>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-stone-800 mb-1">Extended Stay Discounts</h4>
+                        <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                            <li>20% off stays of 7 nights or more</li>
+                            <li>40% off stays of 30 nights or more</li>
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-bold text-stone-800 mb-1">Cleaning Fee</h4>
+                            <p class="text-sm text-stone-600">€25 per stay, per room</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-stone-800 mb-1">Tourist Tax</h4>
+                            <p class="text-sm text-stone-600">€3.50 per person, per night (first 3 nights only)</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-stone-800 mb-1">Payment & Cancellation</h4>
+                        <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
+                            <li>20% deposit required to confirm</li>
+                            <li>Remaining balance due 30 days prior</li>
+                            <li>Payments via PayPal, Venmo, or Bank transfer</li>
+                            <li>Full refund for cancellations 30+ days before arrival</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-stone-100 text-center">
+                    <p class="text-sm font-serif text-amber-800 italic">We look forward to welcoming you and sharing a true home-away-from-home experience.</p>
+                </div>
+            </div>
+
+            <!-- Column 3: Optional Experiences -->
+            <div class="bg-stone-800 p-8 rounded-xl border border-stone-700 shadow-sm flex flex-col h-full text-stone-100">
+                <h3 class="text-2xl font-serif text-white mb-2">Enhance Your Stay</h3>
+                <p class="text-sm font-bold text-amber-500 uppercase tracking-wider mb-6 pb-4 border-b border-stone-600">Optional Experiences</p>
+                <p class="text-sm text-stone-300 mb-6 leading-relaxed">
+                    To make your Bed & Breakfast stay even more memorable, we are pleased to offer a selection of optional experiences and services designed to help you relax, explore, and enjoy the best of Tuscany.
+                </p>
+
+                <div class="space-y-6 flex-grow">
+                    <div>
+                        <h4 class="font-bold text-amber-400 mb-2">Airport Transfers</h4>
+                        <p class="text-xs text-stone-400 mb-2">Convenient pickup service is available upon request:</p>
+                        <ul class="list-none space-y-2 text-sm text-stone-300">
+                            <li class="flex justify-between border-b border-stone-700 pb-1"><span>Pisa Airport</span> <span class="font-bold">€60</span></li>
+                            <li class="flex justify-between border-b border-stone-700 pb-1"><span>Florence Airport</span> <span class="font-bold">€90</span></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-amber-400 mb-2">Experiences & Dining</h4>
+                        <p class="text-xs text-stone-400 mb-3">(Priced per person)</p>
+                        <div class="space-y-4 text-sm text-stone-300">
+                            <div>
+                                <div class="flex justify-between font-bold text-white mb-1"><span>Wine Tasting</span> <span>€35</span></div>
+                                <p class="text-xs text-stone-400">Enjoy a curated tasting of local Tuscan wines paired with regional cheeses in our unique historic cellar.</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between font-bold text-white mb-1"><span>Aperitivo Hour</span> <span>€20</span></div>
+                                <p class="text-xs text-stone-400">Unwind with a classic Italian aperitivo featuring drinks and light bites.</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between font-bold text-white mb-1"><span>Full Cooked Breakfast</span> <span>€15</span></div>
+                                <p class="text-xs text-stone-400">Start your day with a freshly prepared, hearty breakfast.</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between font-bold text-white mb-1"><span>Full Cooked Dinner</span> <span>€25</span></div>
+                                <p class="text-xs text-stone-400">A home-style meal showcasing local flavors and seasonal ingredients.</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between font-bold text-white mb-1"><span>Pasta Making Class</span> <span>€60</span></div>
+                                <p class="text-xs text-stone-400">Learn the art of traditional Italian pasta-making in a hands-on experience.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-amber-400 mb-2">Activities & Rentals</h4>
+                        <div class="space-y-3 text-sm text-stone-300">
+                            <div>
+                                <div class="flex justify-between font-bold text-white mb-1"><span>Vespa Rental (Full Day)</span> <span>€80</span></div>
+                                <p class="text-xs text-stone-400">Explore the Tuscan countryside at your own pace with a classic Vespa.</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between font-bold text-white mb-1"><span>Bike Rental (Per Day)</span> <span>€10</span></div>
+                                <p class="text-xs text-stone-400">A simple and enjoyable way to explore the surrounding area and nearby villages.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-stone-600 text-center">
+                    <p class="text-xs text-stone-400 italic">All experiences and services can be arranged in advance or during your stay, subject to availability. We recommend booking ahead during peak season.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>    <section id="notes" class="py-20 bg-stone-800 text-stone-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-serif text-white mb-10 text-center">Important Things to Note</h2>
             
