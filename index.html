@@ -49,7 +49,8 @@
                 <h3 class="text-3xl font-serif text-amber-800 mb-2">Request to Book</h3>
                 <p class="text-stone-600 mb-6">Fill out the details below and we will get back to you to confirm your dates.</p>
                 
-                <form name="CasaEttoreBooking" method="POST" action="/" data-netlify="true" class="space-y-4">
+                <form name="CasaEttoreBooking" method="POST" data-netlify="true" class="space-y-4">
+                    <input type="hidden" name="form-name" value="CasaEttoreBooking" />
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
@@ -114,6 +115,7 @@
                 <a href="#space" class="text-sm font-medium text-white hover:text-amber-300 transition">The Space</a>
                 <a href="#gallery" class="text-sm font-medium text-white hover:text-amber-300 transition">Gallery</a>
                 <a href="#calendar" class="text-sm font-medium text-white hover:text-amber-300 transition">Availability</a>
+                <a href="#pricing" class="text-sm font-medium text-white hover:text-amber-300 transition">Pricing</a>
                 <a href="#location" class="text-sm font-medium text-white hover:text-amber-300 transition">Location</a>
                 <button onclick="openModal()" class="bg-amber-700 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-amber-600 transition ml-2">
                     Book Now
@@ -133,6 +135,7 @@
                 <a href="#space" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">The Space</a>
                 <a href="#gallery" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Gallery</a>
                 <a href="#calendar" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Availability</a>
+                <a href="#pricing" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Pricing</a>
                 <a href="#location" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Location</a>
                 <button onclick="openModal(); toggleMenu();" class="bg-amber-700 text-white text-center px-4 py-3 rounded-md font-medium mt-4 w-full">
                     Book Now
@@ -151,7 +154,7 @@
                 poster="images/living-room-main.jpg"
                 class="w-full h-full object-cover"
             >
-                <source src="images/main-screen-vid.mov">
+                <source src="images/main-screen.vid.mov">
             </video>
             <div class="absolute inset-0 bg-stone-900/40"></div>
         </div>
@@ -230,7 +233,7 @@
         </div>
     </section>
 
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h2 class="text-3xl font-serif text-amber-800 mb-6">About This Space</h2>
@@ -371,6 +374,7 @@
 
         </div>
     </section>
+
     <!-- Pricing Information Section (Hidden by default, moved after Location) -->
     <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-stone-200 bg-stone-50/50">
         <div class="text-center mb-12">
@@ -573,7 +577,9 @@
             </div>
 
         </div>
-    </section>    <section id="notes" class="py-20 bg-stone-800 text-stone-100">
+    </section>
+
+    <section id="notes" class="py-20 bg-stone-800 text-stone-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-serif text-white mb-10 text-center">Important Things to Note</h2>
             
@@ -696,6 +702,21 @@
                 extraPhotos.classList.add('hidden');
                 btn.innerText = 'Show More Photos';
                 document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Pricing Toggle Logic
+        function togglePricing() {
+            const pricingColumns = document.getElementById('pricingColumns');
+            const btn = document.getElementById('showPricingBtn');
+            
+            if (pricingColumns.classList.contains('hidden')) {
+                pricingColumns.classList.remove('hidden');
+                btn.innerText = 'Hide Pricing Details';
+            } else {
+                pricingColumns.classList.add('hidden');
+                btn.innerText = 'View Pricing Details';
+                document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
             }
         }
     </script>
