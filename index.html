@@ -74,79 +74,7 @@
         <img id="lightbox-img" src="" class="max-h-[90vh] max-w-[95vw] object-contain rounded-md shadow-2xl" />
     </div>
 
-    <div id="bookingModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm overflow-y-auto">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden my-8 relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 transition">
-                <i data-lucide="x"></i>
-            </button>
-            
-            <div class="p-8">
-                <h3 class="text-3xl font-serif text-amber-800 mb-2">Request to Book</h3>
-                <p class="text-stone-600 mb-6">Fill out the details below and we will get back to you to confirm your dates.</p>
-                
-                <form name="CasaEttoreBooking" method="POST" data-netlify="true" class="space-y-4">
-                    <input type="hidden" name="form-name" value="CasaEttoreBooking" />
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-stone-700 mb-1">Check-in</label>
-                            <input type="date" name="checkIn" required class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-stone-700 mb-1">Check-out</label>
-                            <input type="date" name="checkOut" required class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-1">Full Name</label>
-                        <input type="text" name="name" required placeholder="e.g. Jane Doe" class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-stone-700 mb-1">Email</label>
-                            <input type="email" name="email" required placeholder="you@example.com" class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-stone-700 mb-1">Phone Number</label>
-                            <input type="tel" name="phone" required placeholder="+1 (555) 000-0000" class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"/>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-1">Number of Guests</label>
-                        <select name="guests" class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition bg-white">
-                            <option value="1">1 Guest</option>
-                            <option value="2">2 Guests</option>
-                            <option value="3">3 Guests</option>
-                            <option value="4">4 Guests</option>
-                            <option value="5">5 Guests</option>
-                            <option value="6">6 Guests</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-1">Additional Comments or Requests</label>
-                        <textarea name="comments" rows="3" placeholder="Tell us a little bit about your trip..." class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition resize-none"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-amber-700 text-white font-medium py-3 rounded-lg hover:bg-amber-800 transition">
-                        Send Booking Request
-                    </button>
-
-                    <div class="mt-6 pt-6 border-t border-stone-200 text-center">
-                        <p class="text-sm text-stone-600 mb-2">Have a general question before booking?</p>
-                        <a href="mailto:info@casaettore.com?subject=Inquiry%20about%20Casa%20Ettore" class="inline-flex items-center gap-2 text-amber-800 font-medium hover:text-amber-900 transition">
-                            <i data-lucide="mail" class="w-4 h-4"></i>
-                            Email us at info@casaettore.com
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
+    <!-- Restored Navigation Bar -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <div onclick="window.scrollTo(0,0)" class="text-2xl font-serif text-amber-800 font-bold tracking-wider cursor-pointer bg-white/80 backdrop-blur-sm px-3 py-1 rounded-md">
@@ -160,9 +88,9 @@
                 <a href="#calendar" class="text-sm font-medium text-white hover:text-amber-300 transition">Availability</a>
                 <a href="#pricing" class="text-sm font-medium text-white hover:text-amber-300 transition">Pricing</a>
                 <a href="#location" class="text-sm font-medium text-white hover:text-amber-300 transition">Location</a>
-                <button onclick="openModal()" class="bg-amber-700 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-amber-600 transition ml-2">
+                <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-amber-700 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-amber-600 transition ml-2">
                     Book Now
-                </button>
+                </a>
             </div>
 
             <div class="md:hidden">
@@ -180,9 +108,9 @@
                 <a href="#calendar" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Availability</a>
                 <a href="#pricing" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Pricing</a>
                 <a href="#location" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">Location</a>
-                <button onclick="openModal(); toggleMenu();" class="bg-amber-700 text-white text-center px-4 py-3 rounded-md font-medium mt-4 w-full">
+                <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" onclick="toggleMenu()" class="bg-amber-700 text-white text-center px-4 py-3 rounded-md font-medium mt-4 w-full block">
                     Book Now
-                </button>
+                </a>
             </div>
         </div>
     </nav>
@@ -206,15 +134,15 @@
             <p class="text-xl md:text-2xl text-stone-100 mb-10 font-light tracking-wide drop-shadow-md">
                 Experience enchanting history and modern luxury in the heart of Lucca.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="mailto:info@casaettore.com" class="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-stone-900 transition duration-300 text-center w-full sm:w-auto flex items-center justify-center gap-2">
+            <div class="flex flex-row flex-wrap gap-4 justify-center items-center">
+                <a href="mailto:info@casaettore.com" class="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-medium hover:bg-white hover:text-stone-900 transition duration-300 flex items-center justify-center gap-2">
                     <i data-lucide="mail" class="w-5 h-5"></i>
                     Email Inquiry
                 </a>
-                <button onclick="openModal()" class="bg-amber-700 text-white px-8 py-3 rounded-full font-medium hover:bg-amber-800 transition duration-300 flex items-center justify-center gap-2 w-full sm:w-auto">
+                <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-amber-700 text-white px-6 sm:px-8 py-3 rounded-full font-medium hover:bg-amber-800 transition duration-300 flex items-center justify-center gap-2">
                     <i data-lucide="calendar-check" class="w-5 h-5"></i>
                     Request to Book
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -251,29 +179,30 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col lg:flex-row">
-                <div class="lg:w-1/2 cursor-pointer relative group" onclick="openLightbox(document.getElementById('living-room-fire-img').src)">
+            <!-- "A Perfect Place to Rest" Section - Side-by-Side Layout -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col md:flex-row items-stretch">
+                <div class="w-full md:w-1/2 min-h-[300px] md:min-h-[400px] relative cursor-pointer group" onclick="openLightbox(document.getElementById('living-room-fire-img').src)">
                    <img 
                        id="living-room-fire-img"
                        src="images/living-room-fireplace.jpg" 
                        alt="Living Room with Fireplace" 
-                       class="w-full h-full object-cover min-h-[300px] group-hover:opacity-90 transition duration-300" 
+                       class="w-full h-full object-cover group-hover:opacity-90 transition duration-300" 
                        onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80'"
                    />
                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                        <div class="bg-black/50 text-white p-3 rounded-full"><i data-lucide="maximize-2"></i></div>
                    </div>
                 </div>
-                <div class="lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
-                    <h3 class="text-2xl font-serif text-stone-800 mb-4">A Perfect Place to Rest</h3>
-                    <p class="text-stone-600 mb-6 leading-relaxed">
+                <div class="w-full md:w-1/2 p-8 sm:p-10 lg:p-16 flex flex-col justify-center">
+                    <h3 class="text-2xl sm:text-3xl font-serif text-stone-800 mb-6 font-normal">A Perfect Place to Rest</h3>
+                    <p class="text-stone-600 text-base leading-relaxed mb-6">
                         Spend an evening together in our welcoming living room, whether streaming a movie on the big screen tv or playing one of our many board games. 
                     </p>
-                    <p class="text-stone-600 leading-relaxed mb-6">
+                    <p class="text-stone-600 text-base leading-relaxed mb-6">
                         Shop like a local—visit the meat store, cheese store, wine store, and produce store, each deserving their own visit. Casa Ettore is a perfect place to rest after a long day of exploring or just relax and experience "La Dolce Vita".
                     </p>
-                    <p class="text-stone-600 leading-relaxed mb-6">
-                        We offer both whole house rentals as well as private room hosted stays. Check <a href="#calendar" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">availability</a> calendar and <a href="#pricing" onclick="toggleMenu()" class="text-left text-stone-800 py-2 border-b border-stone-100">pricing</a> information below.
+                    <p class="text-stone-600 text-base leading-relaxed">
+                        We offer both whole house rentals as well as private room hosted stays. Check <a href="#calendar" class="font-bold text-stone-800 hover:underline">availability</a> calendar and <a href="#pricing" class="font-bold text-stone-800 hover:underline">pricing</a> information below.
                     </p>
                 </div>
             </div>
@@ -380,10 +309,11 @@
     <section id="calendar" class="py-20 bg-stone-100 border-t border-stone-200">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-serif text-amber-800 mb-4">Availability</h2>
-            <p class="text-stone-600 mb-4 max-w-2xl mx-auto">Check our live calendar below for available dates, then click "Book Now" to send us a direct inquiry.</p>
+            <p class="text-stone-600 mb-8 max-w-2xl mx-auto">Check our live calendar below for available dates, then click "Book Now" to submit your request.</p>
             
-            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md border border-stone-200 h-[500px] md:h-[600px] w-full">
-                <iframe src="https://www.airbnb.com/calendar/ical/1060740768276896657.ics?t=a447cd45841c45aab223784a322c0748" style="border:solid 1px #777" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md border border-stone-200 w-full overflow-x-auto">
+                <div class="houfy_widget" data-widgettype="calendar" data-listingid="457797" data-color1="E56462" data-color2="FFFFFF" data-accessToken="yhoovlngkxfixi432387" data-show_calendarname="Y" data-calendarname="Calendar" data-navigation_buttons="Y" data-button_color="e8485d" data-alignment="C" data-view="month" data-cal_start="sun" data-showprices="N" data-show_listing="Y"></div>
+                <script src="https://widgets.houfy.com/js/main.js"></script>
             </div>
         </div>
     </section>
@@ -453,9 +383,9 @@
                     <div>
                         <h4 class="font-bold text-stone-800 mb-1">Nightly Rates</h4>
                         <ul class="list-disc pl-5 text-sm text-stone-600 space-y-1">
-                            <li>January – March: €310 per night</li>
+                            <li>January – March: €330 per night</li>
                             <li>April – October: €360 per night</li>
-                            <li>November – December: €310 per night</li>
+                            <li>November – December: €330 per night</li>
                         </ul>
                         <p class="text-xs text-stone-500 mt-2 italic">Special pricing may apply during holiday periods and local events (Christmas, New Year, Lucca Comics)—please inquire for details.</p>
                     </div>
@@ -571,8 +501,8 @@
                         <h4 class="font-bold text-amber-400 mb-2">Airport Transfers</h4>
                         <p class="text-xs text-stone-400 mb-2">Convenient pickup service is available upon request:</p>
                         <ul class="list-none space-y-2 text-sm text-stone-300">
-                            <li class="flex justify-between border-b border-stone-700 pb-1"><span>Pisa Airport</span> <span class="font-bold">€60</span></li>
-                            <li class="flex justify-between border-b border-stone-700 pb-1"><span>Florence Airport</span> <span class="font-bold">€90</span></li>
+                            <li class="flex justify-between border-b border-stone-700 pb-1"><span>Pisa Airport</span> <span class="font-bold">€80</span></li>
+                            <li class="flex justify-between border-b border-stone-700 pb-1"><span>Florence Airport</span> <span class="font-bold">€110</span></li>
                         </ul>
                     </div>
 
@@ -582,7 +512,7 @@
                         <div class="space-y-4 text-sm text-stone-300">
                             <div>
                                 <div class="flex justify-between font-bold text-white mb-1"><span>Wine Tasting</span> <span>€35</span></div>
-                                <p class="text-xs text-stone-400">Enjoy a curated tasting of local Tuscan wines paired with regional cheeses in our unique historic cellar.</p>
+                                <p class="text-xs text-stone-400">Enjoy a curated tasting of local Tuscan wines paired with regional cheeses in our unique historic cellar. (Min. 2 persons)</p>
                             </div>
                             <div>
                                 <div class="flex justify-between font-bold text-white mb-1"><span>Aperitivo Hour</span> <span>€20</span></div>
@@ -590,29 +520,15 @@
                             </div>
                             <div>
                                 <div class="flex justify-between font-bold text-white mb-1"><span>Full Cooked Breakfast</span> <span>€15</span></div>
-                                <p class="text-xs text-stone-400">Start your day with a freshly prepared, hearty breakfast.</p>
+                                <p class="text-xs text-stone-400">Start your day with a freshly prepared, hearty breakfast. (Min. 2 persons)</p>
                             </div>
                             <div>
-                                <div class="flex justify-between font-bold text-white mb-1"><span>Full Cooked Dinner</span> <span>€25</span></div>
-                                <p class="text-xs text-stone-400">A home-style meal showcasing local flavors and seasonal ingredients.</p>
+                                <div class="flex justify-between font-bold text-white mb-1"><span>Full Cooked Dinner</span> <span>€40</span></div>
+                                <p class="text-xs text-stone-400">A home-style meal showcasing local flavors and seasonal ingredients. (Min. 2 persons)</p>
                             </div>
                             <div>
                                 <div class="flex justify-between font-bold text-white mb-1"><span>Pasta Making Class</span> <span>€60</span></div>
                                 <p class="text-xs text-stone-400">Learn the art of traditional Italian pasta-making in a hands-on experience.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-amber-400 mb-2">Activities & Rentals</h4>
-                        <div class="space-y-3 text-sm text-stone-300">
-                            <div>
-                                <div class="flex justify-between font-bold text-white mb-1"><span>Vespa Rental (Full Day)</span> <span>€80</span></div>
-                                <p class="text-xs text-stone-400">Explore the Tuscan countryside at your own pace with a classic Vespa.</p>
-                            </div>
-                            <div>
-                                <div class="flex justify-between font-bold text-white mb-1"><span>Bike Rental (Per Day)</span> <span>€10</span></div>
-                                <p class="text-xs text-stone-400">A simple and enjoyable way to explore the surrounding area and nearby villages.</p>
                             </div>
                         </div>
                     </div>
@@ -628,70 +544,23 @@
 
     <!-- Guest Reviews Section -->
     <section id="reviews" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-stone-200">
-        <div class="text-center mb-12">
+        <div class="text-center mb-8">
             <h2 class="text-3xl font-serif text-amber-800 mb-4">Guest Reviews</h2>
-            <p class="text-stone-600 max-w-2xl mx-auto">See what our recent guests have to say about their stay at Casa Ettore.</p>
+            <p class="text-stone-600 max-w-2xl mx-auto mb-8">See what our recent guests have to say about their stay at Casa Ettore.</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 mb-10">
-            <!-- Review 1 -->
-            <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full">
-                <div class="flex text-amber-400 mb-4">
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                </div>
-                <p class="text-stone-600 italic mb-6 flex-grow">"A great apartment in a central but quiet location in the walls of Lucca
-Travelling as 3 couples, all 3 bedrooms were very comfortable and the en suite shower rooms were spotless - we all commented on the bedding and how well we all slept! 
-A very spacious lounge area and a well apportioned kitchen/diner 
-Jen and Eric were proactive, helpful and clear in the communication ahead of check in. All information was provided electronically and in a booklet at the property
-Key safe entry made for a very easy check in
-I would not hesitate to recommend Jen & Eric’s apartment to anyone wanting to travel to Lucca. It’s a great location on a quiet street, just steps away from piazza’s, restaurants, bars and shops
-Thank you both!"</p>
-                <div>
-                    <p class="font-bold text-stone-800">Gemma</p>
-                    <p class="text-xs text-stone-500">April 2026</p>
-                </div>
-            </div>
-
-            <!-- Review 2 -->
-            <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full">
-                <div class="flex text-amber-400 mb-4">
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                </div>
-                <p class="text-stone-600 italic mb-6 flex-grow">"What a wonderful city and apartment. The house is in a perfect location close to all Lucca has to offer. The three beds with en-suite baths were so comfortable. The apartment is very large with everything you could possibly need. Thank you for a great week in Lucca. We look forward to returning soon."</p>
-                <div>
-                    <p class="font-bold text-stone-800">Mary</p>
-                    <p class="text-xs text-stone-500">May 2025</p>
-                </div>
-            </div>
-
-            <!-- Review 3 -->
-            <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full">
-                <div class="flex text-amber-400 mb-4">
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                </div>
-                <p class="text-stone-600 italic mb-6 flex-grow">"An excellent find in an amazing city.   Lucca is best on bikes so you can cover the entire city (and burn off the pasta tordelli!).  This host provides 2 bikes and there are 2 rental places within 200m.  Do what you can to get a reservation at the restaurant nearly next door, Osteria da Pasquale.   It is over the top in food quality, wine curation, and friendliness.  Around the corner in the closest square is Vanni wine shop and next to it, their bar.  Visit the wine shop for an equally well curated set of options, and then ask to sit at the bar with it and order their charcuterie board.  This is well beyond any tourist driven experience.   They, like Pasquale, are the kind of places oenophiles and foodies that value “authentic” are always hoping to find.  Brava Casa Ettore and the community that surrounds you.</p>
-                <div>
-                    <p class="font-bold text-stone-800">Michael</p>
-                    <p class="text-xs text-stone-500">November 2025</p>
-                </div>
-            </div>
+        <div class="flex justify-center mb-8 px-4">
+            <img 
+                src="images/guest-rating.jpg" 
+                alt="Guest Favorite Rating" 
+                onclick="openLightbox(this.src)"
+                class="max-w-3xl w-full h-auto rounded-xl shadow-sm border border-stone-100 cursor-pointer hover:opacity-95 transition duration-300" 
+            />
         </div>
 
-        <div class="text-center">
-            <a href="https://www.airbnb.com/users/profile/1462541859011337193?previous_page_name=PdpHomeMarketplace" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white border-2 border-amber-700 text-amber-800 px-8 py-3 rounded-full font-medium hover:bg-amber-50 transition duration-300">
-                Read all reviews on Airbnb
+        <div class="text-center mt-6">
+            <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white border-2 border-amber-700 text-amber-800 px-8 py-3 rounded-full font-medium hover:bg-amber-50 transition duration-300">
+                Read all reviews on Houfy
                 <i data-lucide="external-link" class="w-4 h-4"></i>
             </a>
         </div>
@@ -717,7 +586,7 @@ Thank you both!"</p>
                     <div>
                         <h4 class="font-bold text-lg text-white mb-2">Passport Registration</h4>
                         <p class="text-stone-300 text-sm leading-relaxed">
-                            Required by Italian Law: We must collect passport information and submit it to Italian authorities within 24 hours of check-in. You will be asked to share a photo of all passports via Airbnb's secure messaging system prior to check-in. The lockbox code will be shared only after all photos have been sent.
+                            Required by Italian Law: We must collect passport information and submit it to Italian authorities within 24 hours of check-in. You will be asked to share a photo of all passports via Houfy's secure messaging system prior to check-in. The lockbox code will be shared only after all photos have been sent.
                         </p>
                     </div>
                 </div>
@@ -734,10 +603,10 @@ Thank you both!"</p>
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <button onclick="openModal()" class="bg-amber-700 text-white px-8 py-4 rounded-xl font-medium hover:bg-amber-800 transition shadow-sm flex items-center justify-center gap-3">
+                <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-amber-700 text-white px-8 py-4 rounded-xl font-medium hover:bg-amber-800 transition shadow-sm flex items-center justify-center gap-3">
                     <i data-lucide="calendar" class="w-5 h-5"></i>
                     Submit Booking Request
-                </button>
+                </a>
                 
                 <a href="mailto:info@casaettore.com" class="bg-white border border-stone-300 text-stone-800 px-8 py-4 rounded-xl font-medium hover:bg-stone-50 transition shadow-sm flex items-center justify-center gap-3">
                     <i data-lucide="mail" class="w-5 h-5 text-amber-700"></i>
@@ -759,9 +628,9 @@ Thank you both!"</p>
             </div>
             
             <div class="flex flex-col items-center md:items-end space-y-4">
-                <button onclick="openModal()" class="bg-white text-stone-900 px-6 py-2 rounded-full font-medium hover:bg-stone-200 transition text-sm">
+                <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-white text-stone-900 px-6 py-2 rounded-full font-medium hover:bg-stone-200 transition text-sm">
                     Request to Book
-                </button>
+                </a>
                 <p class="text-stone-500 text-xs">
                     Registration Number: IT046017C2PN5QNZWX
                 </p>
@@ -773,23 +642,11 @@ Thank you both!"</p>
     </footer>
 
     <script>
-        // Initialize Icons
+        // Initialize Lucide Icons
         lucide.createIcons();
 
         // Set Copyright Year
         document.getElementById('year').innerText = new Date().getFullYear();
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white', 'shadow-md', 'py-3');
-                navbar.classList.remove('bg-transparent', 'py-5');
-            } else {
-                navbar.classList.remove('bg-white', 'shadow-md', 'py-3');
-                navbar.classList.add('bg-transparent', 'py-5');
-            }
-        });
 
         // Mobile Menu Toggle
         const mobileMenu = document.getElementById('mobileMenu');
@@ -801,17 +658,6 @@ Thank you both!"</p>
             }
         }
 
-        // Booking Form Modal Logic
-        const modal = document.getElementById('bookingModal');
-        function openModal() {
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; 
-        }
-        function closeModal() {
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
         // Photo Lightbox Logic
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
@@ -819,15 +665,14 @@ Thank you both!"</p>
         function openLightbox(imageSrc) {
             lightboxImg.src = imageSrc;
             lightbox.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Stop scrolling behind the photo
+            document.body.style.overflow = 'hidden'; 
         }
         
         function closeLightbox() {
             lightbox.classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
+            document.body.style.overflow = 'auto'; 
         }
 
-        // Close lightbox if user clicks anywhere on the black background
         lightbox.addEventListener('click', function(e) {
             if (e.target === lightbox) {
                 closeLightbox();
