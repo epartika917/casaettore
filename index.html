@@ -30,17 +30,40 @@
         .hidden-menu { display: none; }
         .hidden { display: none !important; }
     </style>
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3272L6HQSK"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18353336701">
+</script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-3272L6HQSK');
+  gtag('config', 'AW-18353336701');
 </script>
-
+    <!-- Google tag (gtag.js) event -->
+<script>
+  gtag('event', 'ads_conversion_Book_appointment_1', {
+    // <event_parameters>
+  });
+</script>
+<!-- Google tag (gtag.js) event - delayed navigation helper -->
+<script>
+  // Helper function to delay opening a URL until a gtag event is sent.
+  // Call it in response to an action that should navigate to a URL.
+  function gtagSendEvent(url) {
+    var callback = function () {
+      if (typeof url === 'string') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'ads_conversion_Book_appointment_1', {
+      'event_callback': callback,
+      'event_timeout': 2000,
+      // <event_parameters>
+    });
+    return false;
+  }
+</script>
 
 </head>
 <body class="bg-stone-50 text-stone-800 font-sans antialiased relative">
@@ -66,7 +89,7 @@
                 <a href="#calendar" class="text-xs sm:text-sm font-medium text-white hover:text-amber-300 transition">Availability</a>
                 <a href="#pricing" class="text-xs sm:text-sm font-medium text-white hover:text-amber-300 transition">Pricing</a>
                 <a href="#location" class="text-xs sm:text-sm font-medium text-white hover:text-amber-300 transition">Location</a>
-                <a onclick="return gtag_report_conversion('https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797');" href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-amber-700 text-white px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium hover:bg-amber-600 transition ml-1">
+                <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-amber-700 text-white px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium hover:bg-amber-600 transition ml-1">
                     Book Now
                 </a>
             </div>
@@ -97,7 +120,7 @@
                     <i data-lucide="mail" class="w-5 h-5"></i>
                     Email Inquiry
                 </a>
-                <a onclick="return gtag_report_conversion('https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797');" href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-amber-700 text-white px-6 sm:px-8 py-3 rounded-full font-medium hover:bg-amber-800 transition duration-300 flex items-center justify-center gap-2">
+                <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-amber-700 text-white px-6 sm:px-8 py-3 rounded-full font-medium hover:bg-amber-800 transition duration-300 flex items-center justify-center gap-2">
                     <i data-lucide="calendar-check" class="w-5 h-5"></i>
                     Request to Book
                 </a>
@@ -516,8 +539,12 @@
             />
         </div>
 
-        <div class="text-center mt-6">
-            <a onclick="return gtag_report_conversion('https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797');" href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white border-2 border-amber-700 text-amber-800 px-8 py-3 rounded-full font-medium hover:bg-amber-50 transition duration-300">
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6">
+            <a href="https://g.page/r/CbqutQBG9-DXEBM/review" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-amber-700 text-white px-8 py-3 rounded-full font-medium hover:bg-amber-800 transition duration-300 shadow-sm">
+                Leave a Google Review
+                <i data-lucide="star" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white border-2 border-amber-700 text-amber-800 px-8 py-3 rounded-full font-medium hover:bg-amber-50 transition duration-300">
                 Read all reviews on Houfy
                 <i data-lucide="external-link" class="w-4 h-4"></i>
             </a>
@@ -561,7 +588,7 @@
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a onclick="return gtag_report_conversion('https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797');" href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-amber-700 text-white px-8 py-4 rounded-xl font-medium hover:bg-amber-800 transition shadow-sm flex items-center justify-center gap-3">
+                <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-amber-700 text-white px-8 py-4 rounded-xl font-medium hover:bg-amber-800 transition shadow-sm flex items-center justify-center gap-3">
                     <i data-lucide="calendar" class="w-5 h-5"></i>
                     Submit Booking Request
                 </a>
@@ -586,7 +613,7 @@
             </div>
             
             <div class="flex flex-col items-center md:items-end space-y-4">
-                <a onclick="return gtag_report_conversion('https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797');" href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-white text-stone-900 px-6 py-2 rounded-full font-medium hover:bg-stone-200 transition text-sm">
+                <a href="https://www.houfy.com/lodging/casa-ettore-historic-palazzo/457797" target="_blank" rel="noopener noreferrer" class="bg-white text-stone-900 px-6 py-2 rounded-full font-medium hover:bg-stone-200 transition text-sm">
                     Request to Book
                 </a>
                 <p class="text-stone-500 text-xs">
